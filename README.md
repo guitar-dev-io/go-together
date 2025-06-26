@@ -22,3 +22,9 @@ flutter pub run build_runner build --delete-conflicting-outputs
 
 //via.placeholder
 https://placehold.in/
+
+
+supabase
+
+go_together
+3K.#tE-z)6.yyAM

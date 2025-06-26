@@ -19,8 +19,8 @@ class _ActivityInfoPageState extends State<ActivityInfoPage> {
   // late final PageController controller;
   late final Timer timer;
   int currentPage = 0;
-  double _currentOffset = 0;
-  final double _step = 320; // ระยะห่างแต่ละรูปโดยประมาณ
+  // double _currentOffset = 0;
+  // final double _step = 320; // ระยะห่างแต่ละรูปโดยประมาณ
 
   @override
   void initState() {
@@ -30,26 +30,26 @@ class _ActivityInfoPageState extends State<ActivityInfoPage> {
   }
 
   void init() {
-    final selected = context.read<ActivityBloc>().state.selected;
-    final photos = selected?.photos ?? [];
+    // final selected = context.read<ActivityBloc>().state.selected;
+    // final photos = selected?.photos ?? [];
 
-    timer = Timer.periodic(const Duration(seconds: 3), (_) {
-      if (controller.hasClients) {
-        currentPage = (currentPage + 1) % photos.length;
+    // timer = Timer.periodic(const Duration(seconds: 3), (_) {
+    //   if (controller.hasClients) {
+    //     currentPage = (currentPage + 1) % photos.length;
 
-        final maxOffset = controller.position.maxScrollExtent;
+    //     final maxOffset = controller.position.maxScrollExtent;
 
-        _currentOffset += _step;
-        if (_currentOffset >= maxOffset) {
-          _currentOffset = 0;
-        }
-        controller.animateTo(
-          _currentOffset,
-          duration: const Duration(milliseconds: 400),
-          curve: Curves.easeInOut,
-        );
-      }
-    });
+    //     _currentOffset += _step;
+    //     if (_currentOffset >= maxOffset) {
+    //       _currentOffset = 0;
+    //     }
+    //     controller.animateTo(
+    //       _currentOffset,
+    //       duration: const Duration(milliseconds: 400),
+    //       curve: Curves.easeInOut,
+    //     );
+    //   }
+    // });
   }
 
   @override

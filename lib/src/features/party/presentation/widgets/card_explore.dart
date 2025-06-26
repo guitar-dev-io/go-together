@@ -32,6 +32,7 @@ class CardExprole extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
