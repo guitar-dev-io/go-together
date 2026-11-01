@@ -1,11 +1,8 @@
 //  route_pages;
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import '/src/core/error/error.dart';
-import '/src/core/animation/animation.dart';
 import 'routes.dart';
 
-final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
 
 class AppRoute {
   static const initial = RoutesName.initial;

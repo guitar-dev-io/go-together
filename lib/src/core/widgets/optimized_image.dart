@@ -32,7 +32,7 @@ class OptimizedImage extends StatelessWidget {
         switch (state.extendedImageLoadState) {
           case LoadState.loading:
             return Container(
-              color: Colors.grey.shade200,
+              color: Theme.of(context).colorScheme.surfaceContainerHighest,
               child: const Center(child: CircularProgressIndicator()),
             );
           case LoadState.failed:
@@ -40,7 +40,7 @@ class OptimizedImage extends StatelessWidget {
               child: GestureDetector(
                 onTap: () => state.reLoadImage(),
                 child: Container(
-                  color: Colors.grey.shade200,
+                  color: Theme.of(context).colorScheme.surfaceContainerHighest,
                   child: const Icon(Icons.error),
                 ), // ✅ ถ้าโหลดไม่ได้ กด Retry ได้
               ),

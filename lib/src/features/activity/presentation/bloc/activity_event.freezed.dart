@@ -23,6 +23,11 @@ mixin _$ActivityEvent {
     required TResult Function(String id) getById,
     required TResult Function(Activity activity) selected,
     required TResult Function(bool value) setLoading,
+    required TResult Function(String query) search,
+    required TResult Function(String? tag) filterTag,
+    required TResult Function(String id) toggleSaved,
+    required TResult Function(String id) toggleJoin,
+    required TResult Function(Activity activity) create,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +37,11 @@ mixin _$ActivityEvent {
     TResult? Function(String id)? getById,
     TResult? Function(Activity activity)? selected,
     TResult? Function(bool value)? setLoading,
+    TResult? Function(String query)? search,
+    TResult? Function(String? tag)? filterTag,
+    TResult? Function(String id)? toggleSaved,
+    TResult? Function(String id)? toggleJoin,
+    TResult? Function(Activity activity)? create,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +51,11 @@ mixin _$ActivityEvent {
     TResult Function(String id)? getById,
     TResult Function(Activity activity)? selected,
     TResult Function(bool value)? setLoading,
+    TResult Function(String query)? search,
+    TResult Function(String? tag)? filterTag,
+    TResult Function(String id)? toggleSaved,
+    TResult Function(String id)? toggleJoin,
+    TResult Function(Activity activity)? create,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,6 +66,11 @@ mixin _$ActivityEvent {
     required TResult Function(GetById value) getById,
     required TResult Function(Selected value) selected,
     required TResult Function(SetLoading value) setLoading,
+    required TResult Function(Search value) search,
+    required TResult Function(FilterTag value) filterTag,
+    required TResult Function(ToggleSaved value) toggleSaved,
+    required TResult Function(ToggleJoin value) toggleJoin,
+    required TResult Function(Create value) create,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +80,11 @@ mixin _$ActivityEvent {
     TResult? Function(GetById value)? getById,
     TResult? Function(Selected value)? selected,
     TResult? Function(SetLoading value)? setLoading,
+    TResult? Function(Search value)? search,
+    TResult? Function(FilterTag value)? filterTag,
+    TResult? Function(ToggleSaved value)? toggleSaved,
+    TResult? Function(ToggleJoin value)? toggleJoin,
+    TResult? Function(Create value)? create,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +94,11 @@ mixin _$ActivityEvent {
     TResult Function(GetById value)? getById,
     TResult Function(Selected value)? selected,
     TResult Function(SetLoading value)? setLoading,
+    TResult Function(Search value)? search,
+    TResult Function(FilterTag value)? filterTag,
+    TResult Function(ToggleSaved value)? toggleSaved,
+    TResult Function(ToggleJoin value)? toggleJoin,
+    TResult Function(Create value)? create,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -141,6 +171,11 @@ class _$InitialImpl implements _Initial {
     required TResult Function(String id) getById,
     required TResult Function(Activity activity) selected,
     required TResult Function(bool value) setLoading,
+    required TResult Function(String query) search,
+    required TResult Function(String? tag) filterTag,
+    required TResult Function(String id) toggleSaved,
+    required TResult Function(String id) toggleJoin,
+    required TResult Function(Activity activity) create,
   }) {
     return initial();
   }
@@ -153,6 +188,11 @@ class _$InitialImpl implements _Initial {
     TResult? Function(String id)? getById,
     TResult? Function(Activity activity)? selected,
     TResult? Function(bool value)? setLoading,
+    TResult? Function(String query)? search,
+    TResult? Function(String? tag)? filterTag,
+    TResult? Function(String id)? toggleSaved,
+    TResult? Function(String id)? toggleJoin,
+    TResult? Function(Activity activity)? create,
   }) {
     return initial?.call();
   }
@@ -165,6 +205,11 @@ class _$InitialImpl implements _Initial {
     TResult Function(String id)? getById,
     TResult Function(Activity activity)? selected,
     TResult Function(bool value)? setLoading,
+    TResult Function(String query)? search,
+    TResult Function(String? tag)? filterTag,
+    TResult Function(String id)? toggleSaved,
+    TResult Function(String id)? toggleJoin,
+    TResult Function(Activity activity)? create,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -181,6 +226,11 @@ class _$InitialImpl implements _Initial {
     required TResult Function(GetById value) getById,
     required TResult Function(Selected value) selected,
     required TResult Function(SetLoading value) setLoading,
+    required TResult Function(Search value) search,
+    required TResult Function(FilterTag value) filterTag,
+    required TResult Function(ToggleSaved value) toggleSaved,
+    required TResult Function(ToggleJoin value) toggleJoin,
+    required TResult Function(Create value) create,
   }) {
     return initial(this);
   }
@@ -193,6 +243,11 @@ class _$InitialImpl implements _Initial {
     TResult? Function(GetById value)? getById,
     TResult? Function(Selected value)? selected,
     TResult? Function(SetLoading value)? setLoading,
+    TResult? Function(Search value)? search,
+    TResult? Function(FilterTag value)? filterTag,
+    TResult? Function(ToggleSaved value)? toggleSaved,
+    TResult? Function(ToggleJoin value)? toggleJoin,
+    TResult? Function(Create value)? create,
   }) {
     return initial?.call(this);
   }
@@ -205,6 +260,11 @@ class _$InitialImpl implements _Initial {
     TResult Function(GetById value)? getById,
     TResult Function(Selected value)? selected,
     TResult Function(SetLoading value)? setLoading,
+    TResult Function(Search value)? search,
+    TResult Function(FilterTag value)? filterTag,
+    TResult Function(ToggleSaved value)? toggleSaved,
+    TResult Function(ToggleJoin value)? toggleJoin,
+    TResult Function(Create value)? create,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -264,6 +324,11 @@ class _$FetchActivitiesImpl implements FetchActivities {
     required TResult Function(String id) getById,
     required TResult Function(Activity activity) selected,
     required TResult Function(bool value) setLoading,
+    required TResult Function(String query) search,
+    required TResult Function(String? tag) filterTag,
+    required TResult Function(String id) toggleSaved,
+    required TResult Function(String id) toggleJoin,
+    required TResult Function(Activity activity) create,
   }) {
     return fetchActivities();
   }
@@ -276,6 +341,11 @@ class _$FetchActivitiesImpl implements FetchActivities {
     TResult? Function(String id)? getById,
     TResult? Function(Activity activity)? selected,
     TResult? Function(bool value)? setLoading,
+    TResult? Function(String query)? search,
+    TResult? Function(String? tag)? filterTag,
+    TResult? Function(String id)? toggleSaved,
+    TResult? Function(String id)? toggleJoin,
+    TResult? Function(Activity activity)? create,
   }) {
     return fetchActivities?.call();
   }
@@ -288,6 +358,11 @@ class _$FetchActivitiesImpl implements FetchActivities {
     TResult Function(String id)? getById,
     TResult Function(Activity activity)? selected,
     TResult Function(bool value)? setLoading,
+    TResult Function(String query)? search,
+    TResult Function(String? tag)? filterTag,
+    TResult Function(String id)? toggleSaved,
+    TResult Function(String id)? toggleJoin,
+    TResult Function(Activity activity)? create,
     required TResult orElse(),
   }) {
     if (fetchActivities != null) {
@@ -304,6 +379,11 @@ class _$FetchActivitiesImpl implements FetchActivities {
     required TResult Function(GetById value) getById,
     required TResult Function(Selected value) selected,
     required TResult Function(SetLoading value) setLoading,
+    required TResult Function(Search value) search,
+    required TResult Function(FilterTag value) filterTag,
+    required TResult Function(ToggleSaved value) toggleSaved,
+    required TResult Function(ToggleJoin value) toggleJoin,
+    required TResult Function(Create value) create,
   }) {
     return fetchActivities(this);
   }
@@ -316,6 +396,11 @@ class _$FetchActivitiesImpl implements FetchActivities {
     TResult? Function(GetById value)? getById,
     TResult? Function(Selected value)? selected,
     TResult? Function(SetLoading value)? setLoading,
+    TResult? Function(Search value)? search,
+    TResult? Function(FilterTag value)? filterTag,
+    TResult? Function(ToggleSaved value)? toggleSaved,
+    TResult? Function(ToggleJoin value)? toggleJoin,
+    TResult? Function(Create value)? create,
   }) {
     return fetchActivities?.call(this);
   }
@@ -328,6 +413,11 @@ class _$FetchActivitiesImpl implements FetchActivities {
     TResult Function(GetById value)? getById,
     TResult Function(Selected value)? selected,
     TResult Function(SetLoading value)? setLoading,
+    TResult Function(Search value)? search,
+    TResult Function(FilterTag value)? filterTag,
+    TResult Function(ToggleSaved value)? toggleSaved,
+    TResult Function(ToggleJoin value)? toggleJoin,
+    TResult Function(Create value)? create,
     required TResult orElse(),
   }) {
     if (fetchActivities != null) {
@@ -414,6 +504,11 @@ class _$GetByIdImpl implements GetById {
     required TResult Function(String id) getById,
     required TResult Function(Activity activity) selected,
     required TResult Function(bool value) setLoading,
+    required TResult Function(String query) search,
+    required TResult Function(String? tag) filterTag,
+    required TResult Function(String id) toggleSaved,
+    required TResult Function(String id) toggleJoin,
+    required TResult Function(Activity activity) create,
   }) {
     return getById(id);
   }
@@ -426,6 +521,11 @@ class _$GetByIdImpl implements GetById {
     TResult? Function(String id)? getById,
     TResult? Function(Activity activity)? selected,
     TResult? Function(bool value)? setLoading,
+    TResult? Function(String query)? search,
+    TResult? Function(String? tag)? filterTag,
+    TResult? Function(String id)? toggleSaved,
+    TResult? Function(String id)? toggleJoin,
+    TResult? Function(Activity activity)? create,
   }) {
     return getById?.call(id);
   }
@@ -438,6 +538,11 @@ class _$GetByIdImpl implements GetById {
     TResult Function(String id)? getById,
     TResult Function(Activity activity)? selected,
     TResult Function(bool value)? setLoading,
+    TResult Function(String query)? search,
+    TResult Function(String? tag)? filterTag,
+    TResult Function(String id)? toggleSaved,
+    TResult Function(String id)? toggleJoin,
+    TResult Function(Activity activity)? create,
     required TResult orElse(),
   }) {
     if (getById != null) {
@@ -454,6 +559,11 @@ class _$GetByIdImpl implements GetById {
     required TResult Function(GetById value) getById,
     required TResult Function(Selected value) selected,
     required TResult Function(SetLoading value) setLoading,
+    required TResult Function(Search value) search,
+    required TResult Function(FilterTag value) filterTag,
+    required TResult Function(ToggleSaved value) toggleSaved,
+    required TResult Function(ToggleJoin value) toggleJoin,
+    required TResult Function(Create value) create,
   }) {
     return getById(this);
   }
@@ -466,6 +576,11 @@ class _$GetByIdImpl implements GetById {
     TResult? Function(GetById value)? getById,
     TResult? Function(Selected value)? selected,
     TResult? Function(SetLoading value)? setLoading,
+    TResult? Function(Search value)? search,
+    TResult? Function(FilterTag value)? filterTag,
+    TResult? Function(ToggleSaved value)? toggleSaved,
+    TResult? Function(ToggleJoin value)? toggleJoin,
+    TResult? Function(Create value)? create,
   }) {
     return getById?.call(this);
   }
@@ -478,6 +593,11 @@ class _$GetByIdImpl implements GetById {
     TResult Function(GetById value)? getById,
     TResult Function(Selected value)? selected,
     TResult Function(SetLoading value)? setLoading,
+    TResult Function(Search value)? search,
+    TResult Function(FilterTag value)? filterTag,
+    TResult Function(ToggleSaved value)? toggleSaved,
+    TResult Function(ToggleJoin value)? toggleJoin,
+    TResult Function(Create value)? create,
     required TResult orElse(),
   }) {
     if (getById != null) {
@@ -585,6 +705,11 @@ class _$SelectedImpl implements Selected {
     required TResult Function(String id) getById,
     required TResult Function(Activity activity) selected,
     required TResult Function(bool value) setLoading,
+    required TResult Function(String query) search,
+    required TResult Function(String? tag) filterTag,
+    required TResult Function(String id) toggleSaved,
+    required TResult Function(String id) toggleJoin,
+    required TResult Function(Activity activity) create,
   }) {
     return selected(activity);
   }
@@ -597,6 +722,11 @@ class _$SelectedImpl implements Selected {
     TResult? Function(String id)? getById,
     TResult? Function(Activity activity)? selected,
     TResult? Function(bool value)? setLoading,
+    TResult? Function(String query)? search,
+    TResult? Function(String? tag)? filterTag,
+    TResult? Function(String id)? toggleSaved,
+    TResult? Function(String id)? toggleJoin,
+    TResult? Function(Activity activity)? create,
   }) {
     return selected?.call(activity);
   }
@@ -609,6 +739,11 @@ class _$SelectedImpl implements Selected {
     TResult Function(String id)? getById,
     TResult Function(Activity activity)? selected,
     TResult Function(bool value)? setLoading,
+    TResult Function(String query)? search,
+    TResult Function(String? tag)? filterTag,
+    TResult Function(String id)? toggleSaved,
+    TResult Function(String id)? toggleJoin,
+    TResult Function(Activity activity)? create,
     required TResult orElse(),
   }) {
     if (selected != null) {
@@ -625,6 +760,11 @@ class _$SelectedImpl implements Selected {
     required TResult Function(GetById value) getById,
     required TResult Function(Selected value) selected,
     required TResult Function(SetLoading value) setLoading,
+    required TResult Function(Search value) search,
+    required TResult Function(FilterTag value) filterTag,
+    required TResult Function(ToggleSaved value) toggleSaved,
+    required TResult Function(ToggleJoin value) toggleJoin,
+    required TResult Function(Create value) create,
   }) {
     return selected(this);
   }
@@ -637,6 +777,11 @@ class _$SelectedImpl implements Selected {
     TResult? Function(GetById value)? getById,
     TResult? Function(Selected value)? selected,
     TResult? Function(SetLoading value)? setLoading,
+    TResult? Function(Search value)? search,
+    TResult? Function(FilterTag value)? filterTag,
+    TResult? Function(ToggleSaved value)? toggleSaved,
+    TResult? Function(ToggleJoin value)? toggleJoin,
+    TResult? Function(Create value)? create,
   }) {
     return selected?.call(this);
   }
@@ -649,6 +794,11 @@ class _$SelectedImpl implements Selected {
     TResult Function(GetById value)? getById,
     TResult Function(Selected value)? selected,
     TResult Function(SetLoading value)? setLoading,
+    TResult Function(Search value)? search,
+    TResult Function(FilterTag value)? filterTag,
+    TResult Function(ToggleSaved value)? toggleSaved,
+    TResult Function(ToggleJoin value)? toggleJoin,
+    TResult Function(Create value)? create,
     required TResult orElse(),
   }) {
     if (selected != null) {
@@ -743,6 +893,11 @@ class _$SetLoadingImpl implements SetLoading {
     required TResult Function(String id) getById,
     required TResult Function(Activity activity) selected,
     required TResult Function(bool value) setLoading,
+    required TResult Function(String query) search,
+    required TResult Function(String? tag) filterTag,
+    required TResult Function(String id) toggleSaved,
+    required TResult Function(String id) toggleJoin,
+    required TResult Function(Activity activity) create,
   }) {
     return setLoading(value);
   }
@@ -755,6 +910,11 @@ class _$SetLoadingImpl implements SetLoading {
     TResult? Function(String id)? getById,
     TResult? Function(Activity activity)? selected,
     TResult? Function(bool value)? setLoading,
+    TResult? Function(String query)? search,
+    TResult? Function(String? tag)? filterTag,
+    TResult? Function(String id)? toggleSaved,
+    TResult? Function(String id)? toggleJoin,
+    TResult? Function(Activity activity)? create,
   }) {
     return setLoading?.call(value);
   }
@@ -767,6 +927,11 @@ class _$SetLoadingImpl implements SetLoading {
     TResult Function(String id)? getById,
     TResult Function(Activity activity)? selected,
     TResult Function(bool value)? setLoading,
+    TResult Function(String query)? search,
+    TResult Function(String? tag)? filterTag,
+    TResult Function(String id)? toggleSaved,
+    TResult Function(String id)? toggleJoin,
+    TResult Function(Activity activity)? create,
     required TResult orElse(),
   }) {
     if (setLoading != null) {
@@ -783,6 +948,11 @@ class _$SetLoadingImpl implements SetLoading {
     required TResult Function(GetById value) getById,
     required TResult Function(Selected value) selected,
     required TResult Function(SetLoading value) setLoading,
+    required TResult Function(Search value) search,
+    required TResult Function(FilterTag value) filterTag,
+    required TResult Function(ToggleSaved value) toggleSaved,
+    required TResult Function(ToggleJoin value) toggleJoin,
+    required TResult Function(Create value) create,
   }) {
     return setLoading(this);
   }
@@ -795,6 +965,11 @@ class _$SetLoadingImpl implements SetLoading {
     TResult? Function(GetById value)? getById,
     TResult? Function(Selected value)? selected,
     TResult? Function(SetLoading value)? setLoading,
+    TResult? Function(Search value)? search,
+    TResult? Function(FilterTag value)? filterTag,
+    TResult? Function(ToggleSaved value)? toggleSaved,
+    TResult? Function(ToggleJoin value)? toggleJoin,
+    TResult? Function(Create value)? create,
   }) {
     return setLoading?.call(this);
   }
@@ -807,6 +982,11 @@ class _$SetLoadingImpl implements SetLoading {
     TResult Function(GetById value)? getById,
     TResult Function(Selected value)? selected,
     TResult Function(SetLoading value)? setLoading,
+    TResult Function(Search value)? search,
+    TResult Function(FilterTag value)? filterTag,
+    TResult Function(ToggleSaved value)? toggleSaved,
+    TResult Function(ToggleJoin value)? toggleJoin,
+    TResult Function(Create value)? create,
     required TResult orElse(),
   }) {
     if (setLoading != null) {
@@ -825,5 +1005,958 @@ abstract class SetLoading implements ActivityEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SetLoadingImplCopyWith<_$SetLoadingImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SearchImplCopyWith<$Res> {
+  factory _$$SearchImplCopyWith(
+          _$SearchImpl value, $Res Function(_$SearchImpl) then) =
+      __$$SearchImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String query});
+}
+
+/// @nodoc
+class __$$SearchImplCopyWithImpl<$Res>
+    extends _$ActivityEventCopyWithImpl<$Res, _$SearchImpl>
+    implements _$$SearchImplCopyWith<$Res> {
+  __$$SearchImplCopyWithImpl(
+      _$SearchImpl _value, $Res Function(_$SearchImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ActivityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? query = null,
+  }) {
+    return _then(_$SearchImpl(
+      null == query
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SearchImpl implements Search {
+  const _$SearchImpl(this.query);
+
+  @override
+  final String query;
+
+  @override
+  String toString() {
+    return 'ActivityEvent.search(query: $query)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SearchImpl &&
+            (identical(other.query, query) || other.query == query));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, query);
+
+  /// Create a copy of ActivityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SearchImplCopyWith<_$SearchImpl> get copyWith =>
+      __$$SearchImplCopyWithImpl<_$SearchImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() fetchActivities,
+    required TResult Function(String id) getById,
+    required TResult Function(Activity activity) selected,
+    required TResult Function(bool value) setLoading,
+    required TResult Function(String query) search,
+    required TResult Function(String? tag) filterTag,
+    required TResult Function(String id) toggleSaved,
+    required TResult Function(String id) toggleJoin,
+    required TResult Function(Activity activity) create,
+  }) {
+    return search(query);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? fetchActivities,
+    TResult? Function(String id)? getById,
+    TResult? Function(Activity activity)? selected,
+    TResult? Function(bool value)? setLoading,
+    TResult? Function(String query)? search,
+    TResult? Function(String? tag)? filterTag,
+    TResult? Function(String id)? toggleSaved,
+    TResult? Function(String id)? toggleJoin,
+    TResult? Function(Activity activity)? create,
+  }) {
+    return search?.call(query);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? fetchActivities,
+    TResult Function(String id)? getById,
+    TResult Function(Activity activity)? selected,
+    TResult Function(bool value)? setLoading,
+    TResult Function(String query)? search,
+    TResult Function(String? tag)? filterTag,
+    TResult Function(String id)? toggleSaved,
+    TResult Function(String id)? toggleJoin,
+    TResult Function(Activity activity)? create,
+    required TResult orElse(),
+  }) {
+    if (search != null) {
+      return search(query);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(FetchActivities value) fetchActivities,
+    required TResult Function(GetById value) getById,
+    required TResult Function(Selected value) selected,
+    required TResult Function(SetLoading value) setLoading,
+    required TResult Function(Search value) search,
+    required TResult Function(FilterTag value) filterTag,
+    required TResult Function(ToggleSaved value) toggleSaved,
+    required TResult Function(ToggleJoin value) toggleJoin,
+    required TResult Function(Create value) create,
+  }) {
+    return search(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(FetchActivities value)? fetchActivities,
+    TResult? Function(GetById value)? getById,
+    TResult? Function(Selected value)? selected,
+    TResult? Function(SetLoading value)? setLoading,
+    TResult? Function(Search value)? search,
+    TResult? Function(FilterTag value)? filterTag,
+    TResult? Function(ToggleSaved value)? toggleSaved,
+    TResult? Function(ToggleJoin value)? toggleJoin,
+    TResult? Function(Create value)? create,
+  }) {
+    return search?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(FetchActivities value)? fetchActivities,
+    TResult Function(GetById value)? getById,
+    TResult Function(Selected value)? selected,
+    TResult Function(SetLoading value)? setLoading,
+    TResult Function(Search value)? search,
+    TResult Function(FilterTag value)? filterTag,
+    TResult Function(ToggleSaved value)? toggleSaved,
+    TResult Function(ToggleJoin value)? toggleJoin,
+    TResult Function(Create value)? create,
+    required TResult orElse(),
+  }) {
+    if (search != null) {
+      return search(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Search implements ActivityEvent {
+  const factory Search(final String query) = _$SearchImpl;
+
+  String get query;
+
+  /// Create a copy of ActivityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SearchImplCopyWith<_$SearchImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FilterTagImplCopyWith<$Res> {
+  factory _$$FilterTagImplCopyWith(
+          _$FilterTagImpl value, $Res Function(_$FilterTagImpl) then) =
+      __$$FilterTagImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String? tag});
+}
+
+/// @nodoc
+class __$$FilterTagImplCopyWithImpl<$Res>
+    extends _$ActivityEventCopyWithImpl<$Res, _$FilterTagImpl>
+    implements _$$FilterTagImplCopyWith<$Res> {
+  __$$FilterTagImplCopyWithImpl(
+      _$FilterTagImpl _value, $Res Function(_$FilterTagImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ActivityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? tag = freezed,
+  }) {
+    return _then(_$FilterTagImpl(
+      freezed == tag
+          ? _value.tag
+          : tag // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FilterTagImpl implements FilterTag {
+  const _$FilterTagImpl(this.tag);
+
+  @override
+  final String? tag;
+
+  @override
+  String toString() {
+    return 'ActivityEvent.filterTag(tag: $tag)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FilterTagImpl &&
+            (identical(other.tag, tag) || other.tag == tag));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, tag);
+
+  /// Create a copy of ActivityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FilterTagImplCopyWith<_$FilterTagImpl> get copyWith =>
+      __$$FilterTagImplCopyWithImpl<_$FilterTagImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() fetchActivities,
+    required TResult Function(String id) getById,
+    required TResult Function(Activity activity) selected,
+    required TResult Function(bool value) setLoading,
+    required TResult Function(String query) search,
+    required TResult Function(String? tag) filterTag,
+    required TResult Function(String id) toggleSaved,
+    required TResult Function(String id) toggleJoin,
+    required TResult Function(Activity activity) create,
+  }) {
+    return filterTag(tag);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? fetchActivities,
+    TResult? Function(String id)? getById,
+    TResult? Function(Activity activity)? selected,
+    TResult? Function(bool value)? setLoading,
+    TResult? Function(String query)? search,
+    TResult? Function(String? tag)? filterTag,
+    TResult? Function(String id)? toggleSaved,
+    TResult? Function(String id)? toggleJoin,
+    TResult? Function(Activity activity)? create,
+  }) {
+    return filterTag?.call(tag);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? fetchActivities,
+    TResult Function(String id)? getById,
+    TResult Function(Activity activity)? selected,
+    TResult Function(bool value)? setLoading,
+    TResult Function(String query)? search,
+    TResult Function(String? tag)? filterTag,
+    TResult Function(String id)? toggleSaved,
+    TResult Function(String id)? toggleJoin,
+    TResult Function(Activity activity)? create,
+    required TResult orElse(),
+  }) {
+    if (filterTag != null) {
+      return filterTag(tag);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(FetchActivities value) fetchActivities,
+    required TResult Function(GetById value) getById,
+    required TResult Function(Selected value) selected,
+    required TResult Function(SetLoading value) setLoading,
+    required TResult Function(Search value) search,
+    required TResult Function(FilterTag value) filterTag,
+    required TResult Function(ToggleSaved value) toggleSaved,
+    required TResult Function(ToggleJoin value) toggleJoin,
+    required TResult Function(Create value) create,
+  }) {
+    return filterTag(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(FetchActivities value)? fetchActivities,
+    TResult? Function(GetById value)? getById,
+    TResult? Function(Selected value)? selected,
+    TResult? Function(SetLoading value)? setLoading,
+    TResult? Function(Search value)? search,
+    TResult? Function(FilterTag value)? filterTag,
+    TResult? Function(ToggleSaved value)? toggleSaved,
+    TResult? Function(ToggleJoin value)? toggleJoin,
+    TResult? Function(Create value)? create,
+  }) {
+    return filterTag?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(FetchActivities value)? fetchActivities,
+    TResult Function(GetById value)? getById,
+    TResult Function(Selected value)? selected,
+    TResult Function(SetLoading value)? setLoading,
+    TResult Function(Search value)? search,
+    TResult Function(FilterTag value)? filterTag,
+    TResult Function(ToggleSaved value)? toggleSaved,
+    TResult Function(ToggleJoin value)? toggleJoin,
+    TResult Function(Create value)? create,
+    required TResult orElse(),
+  }) {
+    if (filterTag != null) {
+      return filterTag(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FilterTag implements ActivityEvent {
+  const factory FilterTag(final String? tag) = _$FilterTagImpl;
+
+  String? get tag;
+
+  /// Create a copy of ActivityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$FilterTagImplCopyWith<_$FilterTagImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ToggleSavedImplCopyWith<$Res> {
+  factory _$$ToggleSavedImplCopyWith(
+          _$ToggleSavedImpl value, $Res Function(_$ToggleSavedImpl) then) =
+      __$$ToggleSavedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id});
+}
+
+/// @nodoc
+class __$$ToggleSavedImplCopyWithImpl<$Res>
+    extends _$ActivityEventCopyWithImpl<$Res, _$ToggleSavedImpl>
+    implements _$$ToggleSavedImplCopyWith<$Res> {
+  __$$ToggleSavedImplCopyWithImpl(
+      _$ToggleSavedImpl _value, $Res Function(_$ToggleSavedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ActivityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$ToggleSavedImpl(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ToggleSavedImpl implements ToggleSaved {
+  const _$ToggleSavedImpl(this.id);
+
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'ActivityEvent.toggleSaved(id: $id)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ToggleSavedImpl &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  /// Create a copy of ActivityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ToggleSavedImplCopyWith<_$ToggleSavedImpl> get copyWith =>
+      __$$ToggleSavedImplCopyWithImpl<_$ToggleSavedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() fetchActivities,
+    required TResult Function(String id) getById,
+    required TResult Function(Activity activity) selected,
+    required TResult Function(bool value) setLoading,
+    required TResult Function(String query) search,
+    required TResult Function(String? tag) filterTag,
+    required TResult Function(String id) toggleSaved,
+    required TResult Function(String id) toggleJoin,
+    required TResult Function(Activity activity) create,
+  }) {
+    return toggleSaved(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? fetchActivities,
+    TResult? Function(String id)? getById,
+    TResult? Function(Activity activity)? selected,
+    TResult? Function(bool value)? setLoading,
+    TResult? Function(String query)? search,
+    TResult? Function(String? tag)? filterTag,
+    TResult? Function(String id)? toggleSaved,
+    TResult? Function(String id)? toggleJoin,
+    TResult? Function(Activity activity)? create,
+  }) {
+    return toggleSaved?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? fetchActivities,
+    TResult Function(String id)? getById,
+    TResult Function(Activity activity)? selected,
+    TResult Function(bool value)? setLoading,
+    TResult Function(String query)? search,
+    TResult Function(String? tag)? filterTag,
+    TResult Function(String id)? toggleSaved,
+    TResult Function(String id)? toggleJoin,
+    TResult Function(Activity activity)? create,
+    required TResult orElse(),
+  }) {
+    if (toggleSaved != null) {
+      return toggleSaved(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(FetchActivities value) fetchActivities,
+    required TResult Function(GetById value) getById,
+    required TResult Function(Selected value) selected,
+    required TResult Function(SetLoading value) setLoading,
+    required TResult Function(Search value) search,
+    required TResult Function(FilterTag value) filterTag,
+    required TResult Function(ToggleSaved value) toggleSaved,
+    required TResult Function(ToggleJoin value) toggleJoin,
+    required TResult Function(Create value) create,
+  }) {
+    return toggleSaved(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(FetchActivities value)? fetchActivities,
+    TResult? Function(GetById value)? getById,
+    TResult? Function(Selected value)? selected,
+    TResult? Function(SetLoading value)? setLoading,
+    TResult? Function(Search value)? search,
+    TResult? Function(FilterTag value)? filterTag,
+    TResult? Function(ToggleSaved value)? toggleSaved,
+    TResult? Function(ToggleJoin value)? toggleJoin,
+    TResult? Function(Create value)? create,
+  }) {
+    return toggleSaved?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(FetchActivities value)? fetchActivities,
+    TResult Function(GetById value)? getById,
+    TResult Function(Selected value)? selected,
+    TResult Function(SetLoading value)? setLoading,
+    TResult Function(Search value)? search,
+    TResult Function(FilterTag value)? filterTag,
+    TResult Function(ToggleSaved value)? toggleSaved,
+    TResult Function(ToggleJoin value)? toggleJoin,
+    TResult Function(Create value)? create,
+    required TResult orElse(),
+  }) {
+    if (toggleSaved != null) {
+      return toggleSaved(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ToggleSaved implements ActivityEvent {
+  const factory ToggleSaved(final String id) = _$ToggleSavedImpl;
+
+  String get id;
+
+  /// Create a copy of ActivityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ToggleSavedImplCopyWith<_$ToggleSavedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ToggleJoinImplCopyWith<$Res> {
+  factory _$$ToggleJoinImplCopyWith(
+          _$ToggleJoinImpl value, $Res Function(_$ToggleJoinImpl) then) =
+      __$$ToggleJoinImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id});
+}
+
+/// @nodoc
+class __$$ToggleJoinImplCopyWithImpl<$Res>
+    extends _$ActivityEventCopyWithImpl<$Res, _$ToggleJoinImpl>
+    implements _$$ToggleJoinImplCopyWith<$Res> {
+  __$$ToggleJoinImplCopyWithImpl(
+      _$ToggleJoinImpl _value, $Res Function(_$ToggleJoinImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ActivityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$ToggleJoinImpl(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ToggleJoinImpl implements ToggleJoin {
+  const _$ToggleJoinImpl(this.id);
+
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'ActivityEvent.toggleJoin(id: $id)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ToggleJoinImpl &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  /// Create a copy of ActivityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ToggleJoinImplCopyWith<_$ToggleJoinImpl> get copyWith =>
+      __$$ToggleJoinImplCopyWithImpl<_$ToggleJoinImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() fetchActivities,
+    required TResult Function(String id) getById,
+    required TResult Function(Activity activity) selected,
+    required TResult Function(bool value) setLoading,
+    required TResult Function(String query) search,
+    required TResult Function(String? tag) filterTag,
+    required TResult Function(String id) toggleSaved,
+    required TResult Function(String id) toggleJoin,
+    required TResult Function(Activity activity) create,
+  }) {
+    return toggleJoin(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? fetchActivities,
+    TResult? Function(String id)? getById,
+    TResult? Function(Activity activity)? selected,
+    TResult? Function(bool value)? setLoading,
+    TResult? Function(String query)? search,
+    TResult? Function(String? tag)? filterTag,
+    TResult? Function(String id)? toggleSaved,
+    TResult? Function(String id)? toggleJoin,
+    TResult? Function(Activity activity)? create,
+  }) {
+    return toggleJoin?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? fetchActivities,
+    TResult Function(String id)? getById,
+    TResult Function(Activity activity)? selected,
+    TResult Function(bool value)? setLoading,
+    TResult Function(String query)? search,
+    TResult Function(String? tag)? filterTag,
+    TResult Function(String id)? toggleSaved,
+    TResult Function(String id)? toggleJoin,
+    TResult Function(Activity activity)? create,
+    required TResult orElse(),
+  }) {
+    if (toggleJoin != null) {
+      return toggleJoin(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(FetchActivities value) fetchActivities,
+    required TResult Function(GetById value) getById,
+    required TResult Function(Selected value) selected,
+    required TResult Function(SetLoading value) setLoading,
+    required TResult Function(Search value) search,
+    required TResult Function(FilterTag value) filterTag,
+    required TResult Function(ToggleSaved value) toggleSaved,
+    required TResult Function(ToggleJoin value) toggleJoin,
+    required TResult Function(Create value) create,
+  }) {
+    return toggleJoin(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(FetchActivities value)? fetchActivities,
+    TResult? Function(GetById value)? getById,
+    TResult? Function(Selected value)? selected,
+    TResult? Function(SetLoading value)? setLoading,
+    TResult? Function(Search value)? search,
+    TResult? Function(FilterTag value)? filterTag,
+    TResult? Function(ToggleSaved value)? toggleSaved,
+    TResult? Function(ToggleJoin value)? toggleJoin,
+    TResult? Function(Create value)? create,
+  }) {
+    return toggleJoin?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(FetchActivities value)? fetchActivities,
+    TResult Function(GetById value)? getById,
+    TResult Function(Selected value)? selected,
+    TResult Function(SetLoading value)? setLoading,
+    TResult Function(Search value)? search,
+    TResult Function(FilterTag value)? filterTag,
+    TResult Function(ToggleSaved value)? toggleSaved,
+    TResult Function(ToggleJoin value)? toggleJoin,
+    TResult Function(Create value)? create,
+    required TResult orElse(),
+  }) {
+    if (toggleJoin != null) {
+      return toggleJoin(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ToggleJoin implements ActivityEvent {
+  const factory ToggleJoin(final String id) = _$ToggleJoinImpl;
+
+  String get id;
+
+  /// Create a copy of ActivityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ToggleJoinImplCopyWith<_$ToggleJoinImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CreateImplCopyWith<$Res> {
+  factory _$$CreateImplCopyWith(
+          _$CreateImpl value, $Res Function(_$CreateImpl) then) =
+      __$$CreateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Activity activity});
+
+  $ActivityCopyWith<$Res> get activity;
+}
+
+/// @nodoc
+class __$$CreateImplCopyWithImpl<$Res>
+    extends _$ActivityEventCopyWithImpl<$Res, _$CreateImpl>
+    implements _$$CreateImplCopyWith<$Res> {
+  __$$CreateImplCopyWithImpl(
+      _$CreateImpl _value, $Res Function(_$CreateImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ActivityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? activity = null,
+  }) {
+    return _then(_$CreateImpl(
+      null == activity
+          ? _value.activity
+          : activity // ignore: cast_nullable_to_non_nullable
+              as Activity,
+    ));
+  }
+
+  /// Create a copy of ActivityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ActivityCopyWith<$Res> get activity {
+    return $ActivityCopyWith<$Res>(_value.activity, (value) {
+      return _then(_value.copyWith(activity: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$CreateImpl implements Create {
+  const _$CreateImpl(this.activity);
+
+  @override
+  final Activity activity;
+
+  @override
+  String toString() {
+    return 'ActivityEvent.create(activity: $activity)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CreateImpl &&
+            (identical(other.activity, activity) ||
+                other.activity == activity));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, activity);
+
+  /// Create a copy of ActivityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CreateImplCopyWith<_$CreateImpl> get copyWith =>
+      __$$CreateImplCopyWithImpl<_$CreateImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() fetchActivities,
+    required TResult Function(String id) getById,
+    required TResult Function(Activity activity) selected,
+    required TResult Function(bool value) setLoading,
+    required TResult Function(String query) search,
+    required TResult Function(String? tag) filterTag,
+    required TResult Function(String id) toggleSaved,
+    required TResult Function(String id) toggleJoin,
+    required TResult Function(Activity activity) create,
+  }) {
+    return create(activity);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? fetchActivities,
+    TResult? Function(String id)? getById,
+    TResult? Function(Activity activity)? selected,
+    TResult? Function(bool value)? setLoading,
+    TResult? Function(String query)? search,
+    TResult? Function(String? tag)? filterTag,
+    TResult? Function(String id)? toggleSaved,
+    TResult? Function(String id)? toggleJoin,
+    TResult? Function(Activity activity)? create,
+  }) {
+    return create?.call(activity);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? fetchActivities,
+    TResult Function(String id)? getById,
+    TResult Function(Activity activity)? selected,
+    TResult Function(bool value)? setLoading,
+    TResult Function(String query)? search,
+    TResult Function(String? tag)? filterTag,
+    TResult Function(String id)? toggleSaved,
+    TResult Function(String id)? toggleJoin,
+    TResult Function(Activity activity)? create,
+    required TResult orElse(),
+  }) {
+    if (create != null) {
+      return create(activity);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(FetchActivities value) fetchActivities,
+    required TResult Function(GetById value) getById,
+    required TResult Function(Selected value) selected,
+    required TResult Function(SetLoading value) setLoading,
+    required TResult Function(Search value) search,
+    required TResult Function(FilterTag value) filterTag,
+    required TResult Function(ToggleSaved value) toggleSaved,
+    required TResult Function(ToggleJoin value) toggleJoin,
+    required TResult Function(Create value) create,
+  }) {
+    return create(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(FetchActivities value)? fetchActivities,
+    TResult? Function(GetById value)? getById,
+    TResult? Function(Selected value)? selected,
+    TResult? Function(SetLoading value)? setLoading,
+    TResult? Function(Search value)? search,
+    TResult? Function(FilterTag value)? filterTag,
+    TResult? Function(ToggleSaved value)? toggleSaved,
+    TResult? Function(ToggleJoin value)? toggleJoin,
+    TResult? Function(Create value)? create,
+  }) {
+    return create?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(FetchActivities value)? fetchActivities,
+    TResult Function(GetById value)? getById,
+    TResult Function(Selected value)? selected,
+    TResult Function(SetLoading value)? setLoading,
+    TResult Function(Search value)? search,
+    TResult Function(FilterTag value)? filterTag,
+    TResult Function(ToggleSaved value)? toggleSaved,
+    TResult Function(ToggleJoin value)? toggleJoin,
+    TResult Function(Create value)? create,
+    required TResult orElse(),
+  }) {
+    if (create != null) {
+      return create(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Create implements ActivityEvent {
+  const factory Create(final Activity activity) = _$CreateImpl;
+
+  Activity get activity;
+
+  /// Create a copy of ActivityEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CreateImplCopyWith<_$CreateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

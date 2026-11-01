@@ -3,9 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gotogether/src/core/layouts/nav_buttom_bar.dart';
 import 'package:gotogether/src/features/activity/presentation/bloc/activity_bloc.dart';
 import 'package:gotogether/src/features/activity/presentation/bloc/activity_event.dart';
-import 'package:gotogether/src/features/party/presentation/widgets/card_explore.dart';
-import 'package:gotogether/src/features/party/presentation/widgets/listview_explore.dart';
+import 'package:gotogether/src/features/activity/presentation/bloc/activity_state.dart';
+import 'package:gotogether/src/features/notification/presentation/pages/notification_page.dart';
 import 'package:gotogether/src/features/party/presentation/pages/pages.dart';
+import 'package:gotogether/src/features/party/presentation/widgets/widgets.dart';
 import 'package:gotogether/src/features/profile/presentation/pages/profile_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,68 +17,116 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // late ActivityBloc _bloc;
+  int _index = 0;
+  bool _searching = false;
+  final _searchCtrl = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    // _bloc = ActivityBloc()..add(const ActivityEvent.fetchActivities());
-    BlocProvider.of<ActivityBloc>(context).add(const ActivityEvent.fetchActivities());
+    context.read<ActivityBloc>().add(const ActivityEvent.fetchActivities());
   }
 
   @override
   void dispose() {
-    // _bloc.close();
+    _searchCtrl.dispose();
     super.dispose();
+  }
+
+  void _closeSearch() {
+    _searchCtrl.clear();
+    context.read<ActivityBloc>().add(const ActivityEvent.search(''));
+    setState(() => _searching = false);
+  }
+
+  static const _titles = ['Go Together', 'ทริปของฉัน', 'บันทึกไว้', 'โปรไฟล์'];
+
+  PreferredSizeWidget _appBar() {
+    if (_searching && _index == 0) {
+      return AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: _closeSearch,
+        ),
+        title: TextField(
+          controller: _searchCtrl,
+          autofocus: true,
+          decoration: const InputDecoration(
+            hintText: 'ค้นหาทริป สถานที่...',
+            filled: false,
+          ),
+          onChanged: (v) =>
+              context.read<ActivityBloc>().add(ActivityEvent.search(v)),
+        ),
+      );
+    }
+    return AppBar(
+      title: Text(_titles[_index]),
+      actions: [
+        if (_index == 0)
+          IconButton(
+            tooltip: 'ค้นหา',
+            onPressed: () => setState(() => _searching = true),
+            icon: const Icon(Icons.search),
+          ),
+        IconButton(
+          tooltip: 'การแจ้งเตือน',
+          onPressed: () => Navigator.of(context).push(
+            MaterialPageRoute(builder: (_) => const NotificationPage()),
+          ),
+          icon: const Badge(smallSize: 8, child: Icon(Icons.notifications_outlined)),
+        ),
+      ],
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        // title: Text('Home Page'),
-        // leadingWidth: 40,
-        // backgroundColor: Colors.red,
-        leading: Padding(
-          padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
-          child: InkWell(
-            child: CircleAvatar(),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => ProfilePage()),
-              );
-            },
-          ),
-        ),
-        actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.person_add)),
-          IconButton(onPressed: () {}, icon: Icon(Icons.search)),
-        ],
+      appBar: _appBar(),
+      body: BlocBuilder<ActivityBloc, ActivityState>(
+        builder: (context, state) {
+          final mine = state.activities
+              .where((a) => state.joinedIds.contains(a.id))
+              .toList();
+          final saved = state.activities
+              .where((a) => state.savedIds.contains(a.id))
+              .toList();
+          return IndexedStack(
+            index: _index,
+            children: [
+              const ListviewExplore(),
+              ActivityList(
+                items: mine,
+                emptyTitle: 'ยังไม่มีทริปที่เข้าร่วม',
+                emptySubtitle: 'เลือกทริปที่สนใจแล้วกด "เข้าร่วมทริป"',
+              ),
+              ActivityList(
+                items: saved,
+                emptyTitle: 'ยังไม่มีทริปที่บันทึกไว้',
+                emptySubtitle: 'กดไอคอนบุ๊กมาร์กที่การ์ดเพื่อเก็บไว้ดูทีหลัง',
+              ),
+              const ProfileView(),
+            ],
+          );
+        },
       ),
-      body: Column(
-        children: [
-          // Center(
-          //   child: Text('Home Page'),
-          // ),
-          // ElevatedButton(
-          //   onPressed: () {
-          //     Navigator.push(
-          //       context,
-          //       MaterialPageRoute(builder: (context) => CreatePartyPage()),
-          //     );
-          //   },
-          //   child: Text('Create Thip'),
-          // )
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: ListviewExplore(),
-            ),
-          )
-        ],
+      floatingActionButton: _index <= 1
+          ? FloatingActionButton.extended(
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => const CreatePartyPage()),
+              ),
+              icon: const Icon(Icons.add),
+              label: const Text('สร้างทริป'),
+            )
+          : null,
+      bottomNavigationBar: NavButtomBar(
+        selectedIndex: _index,
+        onSelected: (i) => setState(() {
+          _index = i;
+          if (i != 0 && _searching) _closeSearch();
+        }),
       ),
-      bottomNavigationBar: NavButtomBar(),
     );
   }
 }

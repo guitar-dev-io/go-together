@@ -24,6 +24,10 @@ mixin _$ActivityState {
   Activity? get selected => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   String? get error => throw _privateConstructorUsedError;
+  String get query => throw _privateConstructorUsedError;
+  String? get tag => throw _privateConstructorUsedError;
+  List<String> get savedIds => throw _privateConstructorUsedError;
+  List<String> get joinedIds => throw _privateConstructorUsedError;
 
   /// Serializes this ActivityState to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -45,7 +49,11 @@ abstract class $ActivityStateCopyWith<$Res> {
       {List<Activity> activities,
       Activity? selected,
       bool isLoading,
-      String? error});
+      String? error,
+      String query,
+      String? tag,
+      List<String> savedIds,
+      List<String> joinedIds});
 
   $ActivityCopyWith<$Res>? get selected;
 }
@@ -69,6 +77,10 @@ class _$ActivityStateCopyWithImpl<$Res, $Val extends ActivityState>
     Object? selected = freezed,
     Object? isLoading = null,
     Object? error = freezed,
+    Object? query = null,
+    Object? tag = freezed,
+    Object? savedIds = null,
+    Object? joinedIds = null,
   }) {
     return _then(_value.copyWith(
       activities: null == activities
@@ -87,6 +99,22 @@ class _$ActivityStateCopyWithImpl<$Res, $Val extends ActivityState>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String?,
+      query: null == query
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
+              as String,
+      tag: freezed == tag
+          ? _value.tag
+          : tag // ignore: cast_nullable_to_non_nullable
+              as String?,
+      savedIds: null == savedIds
+          ? _value.savedIds
+          : savedIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      joinedIds: null == joinedIds
+          ? _value.joinedIds
+          : joinedIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 
@@ -117,7 +145,11 @@ abstract class _$$ActivityStateImplCopyWith<$Res>
       {List<Activity> activities,
       Activity? selected,
       bool isLoading,
-      String? error});
+      String? error,
+      String query,
+      String? tag,
+      List<String> savedIds,
+      List<String> joinedIds});
 
   @override
   $ActivityCopyWith<$Res>? get selected;
@@ -140,6 +172,10 @@ class __$$ActivityStateImplCopyWithImpl<$Res>
     Object? selected = freezed,
     Object? isLoading = null,
     Object? error = freezed,
+    Object? query = null,
+    Object? tag = freezed,
+    Object? savedIds = null,
+    Object? joinedIds = null,
   }) {
     return _then(_$ActivityStateImpl(
       activities: null == activities
@@ -158,6 +194,22 @@ class __$$ActivityStateImplCopyWithImpl<$Res>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String?,
+      query: null == query
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
+              as String,
+      tag: freezed == tag
+          ? _value.tag
+          : tag // ignore: cast_nullable_to_non_nullable
+              as String?,
+      savedIds: null == savedIds
+          ? _value._savedIds
+          : savedIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      joinedIds: null == joinedIds
+          ? _value._joinedIds
+          : joinedIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -169,8 +221,14 @@ class _$ActivityStateImpl implements _ActivityState {
       {final List<Activity> activities = const [],
       this.selected,
       this.isLoading = false,
-      this.error})
-      : _activities = activities;
+      this.error,
+      this.query = '',
+      this.tag,
+      final List<String> savedIds = const [],
+      final List<String> joinedIds = const []})
+      : _activities = activities,
+        _savedIds = savedIds,
+        _joinedIds = joinedIds;
 
   factory _$ActivityStateImpl.fromJson(Map<String, dynamic> json) =>
       _$$ActivityStateImplFromJson(json);
@@ -191,10 +249,32 @@ class _$ActivityStateImpl implements _ActivityState {
   final bool isLoading;
   @override
   final String? error;
+  @override
+  @JsonKey()
+  final String query;
+  @override
+  final String? tag;
+  final List<String> _savedIds;
+  @override
+  @JsonKey()
+  List<String> get savedIds {
+    if (_savedIds is EqualUnmodifiableListView) return _savedIds;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_savedIds);
+  }
+
+  final List<String> _joinedIds;
+  @override
+  @JsonKey()
+  List<String> get joinedIds {
+    if (_joinedIds is EqualUnmodifiableListView) return _joinedIds;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_joinedIds);
+  }
 
   @override
   String toString() {
-    return 'ActivityState(activities: $activities, selected: $selected, isLoading: $isLoading, error: $error)';
+    return 'ActivityState(activities: $activities, selected: $selected, isLoading: $isLoading, error: $error, query: $query, tag: $tag, savedIds: $savedIds, joinedIds: $joinedIds)';
   }
 
   @override
@@ -208,7 +288,12 @@ class _$ActivityStateImpl implements _ActivityState {
                 other.selected == selected) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
-            (identical(other.error, error) || other.error == error));
+            (identical(other.error, error) || other.error == error) &&
+            (identical(other.query, query) || other.query == query) &&
+            (identical(other.tag, tag) || other.tag == tag) &&
+            const DeepCollectionEquality().equals(other._savedIds, _savedIds) &&
+            const DeepCollectionEquality()
+                .equals(other._joinedIds, _joinedIds));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -218,7 +303,11 @@ class _$ActivityStateImpl implements _ActivityState {
       const DeepCollectionEquality().hash(_activities),
       selected,
       isLoading,
-      error);
+      error,
+      query,
+      tag,
+      const DeepCollectionEquality().hash(_savedIds),
+      const DeepCollectionEquality().hash(_joinedIds));
 
   /// Create a copy of ActivityState
   /// with the given fields replaced by the non-null parameter values.
@@ -241,7 +330,11 @@ abstract class _ActivityState implements ActivityState {
       {final List<Activity> activities,
       final Activity? selected,
       final bool isLoading,
-      final String? error}) = _$ActivityStateImpl;
+      final String? error,
+      final String query,
+      final String? tag,
+      final List<String> savedIds,
+      final List<String> joinedIds}) = _$ActivityStateImpl;
 
   factory _ActivityState.fromJson(Map<String, dynamic> json) =
       _$ActivityStateImpl.fromJson;
@@ -254,6 +347,14 @@ abstract class _ActivityState implements ActivityState {
   bool get isLoading;
   @override
   String? get error;
+  @override
+  String get query;
+  @override
+  String? get tag;
+  @override
+  List<String> get savedIds;
+  @override
+  List<String> get joinedIds;
 
   /// Create a copy of ActivityState
   /// with the given fields replaced by the non-null parameter values.

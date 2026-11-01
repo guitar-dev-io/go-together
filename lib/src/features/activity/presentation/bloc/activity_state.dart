@@ -22,6 +22,10 @@ class ActivityState with _$ActivityState {
     Activity? selected,
     @Default(false) bool isLoading,
     String? error,
+    @Default('') String query,
+    String? tag,
+    @Default([]) List<String> savedIds,
+    @Default([]) List<String> joinedIds,
   }) = _ActivityState;
 
   factory ActivityState.fromJson(Map<String, dynamic> json) =>

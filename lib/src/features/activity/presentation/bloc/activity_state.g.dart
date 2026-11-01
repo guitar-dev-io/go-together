@@ -17,6 +17,16 @@ _$ActivityStateImpl _$$ActivityStateImplFromJson(Map<String, dynamic> json) =>
           : Activity.fromJson(json['selected'] as Map<String, dynamic>),
       isLoading: json['isLoading'] as bool? ?? false,
       error: json['error'] as String?,
+      query: json['query'] as String? ?? '',
+      tag: json['tag'] as String?,
+      savedIds: (json['savedIds'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
+      joinedIds: (json['joinedIds'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$ActivityStateImplToJson(_$ActivityStateImpl instance) =>
@@ -25,4 +35,8 @@ Map<String, dynamic> _$$ActivityStateImplToJson(_$ActivityStateImpl instance) =>
       'selected': instance.selected,
       'isLoading': instance.isLoading,
       'error': instance.error,
+      'query': instance.query,
+      'tag': instance.tag,
+      'savedIds': instance.savedIds,
+      'joinedIds': instance.joinedIds,
     };

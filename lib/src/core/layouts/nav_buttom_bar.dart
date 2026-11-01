@@ -1,37 +1,41 @@
 import 'package:flutter/material.dart';
 
-class NavButtomBar extends StatefulWidget {
-  const NavButtomBar({super.key});
+/// แถบนำทางด้านล่าง ควบคุมจากภายนอกผ่าน [selectedIndex]
+class NavButtomBar extends StatelessWidget {
+  const NavButtomBar({
+    super.key,
+    required this.selectedIndex,
+    required this.onSelected,
+  });
 
-  @override
-  State<NavButtomBar> createState() => _NavButtomBarState();
-}
-
-class _NavButtomBarState extends State<NavButtomBar> {
-  int selectedIndex = 0;
-  
-  @override
-  void initState() {
-    super.initState();
-  }
+  final int selectedIndex;
+  final ValueChanged<int> onSelected;
 
   @override
   Widget build(BuildContext context) {
     return NavigationBar(
-      // labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
       selectedIndex: selectedIndex,
-      onDestinationSelected: (int index) {
-        setState(() {
-          selectedIndex = index;
-        });
-      },
-      destinations:  [
-        NavigationDestination(icon: Icon(Icons.explore), label: 'Explore'),
-        NavigationDestination(icon: Icon(Icons.commute), label: 'Commute'),
+      onDestinationSelected: onSelected,
+      destinations: const [
         NavigationDestination(
-          selectedIcon: Icon(Icons.bookmark),
+          icon: Icon(Icons.explore_outlined),
+          selectedIcon: Icon(Icons.explore),
+          label: 'สำรวจ',
+        ),
+        NavigationDestination(
+          icon: Icon(Icons.luggage_outlined),
+          selectedIcon: Icon(Icons.luggage),
+          label: 'ทริปของฉัน',
+        ),
+        NavigationDestination(
           icon: Icon(Icons.bookmark_border),
-          label: 'Saved',
+          selectedIcon: Icon(Icons.bookmark),
+          label: 'บันทึกไว้',
+        ),
+        NavigationDestination(
+          icon: Icon(Icons.person_outline),
+          selectedIcon: Icon(Icons.person),
+          label: 'โปรไฟล์',
         ),
       ],
     );

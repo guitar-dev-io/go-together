@@ -1,30 +1,31 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:gotogether/main.dart';
+import 'package:gotogether/root.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    //await tester.pumpWidget(const MyApp());
+  testWidgets('Explore feed shows activities and can open create page',
+      (tester) async {
+    // เครือข่ายถูกบล็อกในเทสต์ จึงข้ามข้อผิดพลาดโหลดรูปเท่านั้น
+    final original = FlutterError.onError;
+    FlutterError.onError = (details) {
+      if (details.exception is NetworkImageLoadException) return;
+      original?.call(details);
+    };
+    addTearDown(() => FlutterError.onError = original);
 
-    //// Verify that our counter starts at 0.
-    //expect(find.text('0'), findsOneWidget);
-    //expect(find.text('1'), findsNothing);
+    await tester.pumpWidget(const RootApp());
+    await tester.pump(const Duration(seconds: 1));
 
-    //// Tap the '+' icon and trigger a frame.
-    //await tester.tap(find.byIcon(Icons.add));
-    //await tester.pump();
+    expect(find.text('Go Together'), findsOneWidget);
+    expect(find.text('สร้างทริป'), findsOneWidget);
 
-    //// Verify that our counter has incremented.
-    //expect(find.text('0'), findsNothing);
-    //expect(find.text('1'), findsOneWidget);
+    await tester.tap(find.text('สร้างทริป'));
+    await tester.pumpAndSettle();
+    expect(find.text('โพสต์ทริป'), findsOneWidget);
+
+    // validation fires on empty submit
+    await tester.tap(find.text('โพสต์ทริป'));
+    await tester.pump();
+    expect(find.text('จำเป็นต้องกรอก'), findsWidgets);
   });
 }
