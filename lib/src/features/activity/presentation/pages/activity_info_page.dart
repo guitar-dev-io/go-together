@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gotogether/src/core/models/activity/activity_model.dart';
-import 'package:gotogether/src/core/models/activity/user_model.dart';
+import 'package:gotogether/src/features/activity/domain/entities/entities.dart';
 import 'package:gotogether/src/core/widgets/optimized_image.dart';
 import 'package:gotogether/src/features/activity/presentation/bloc/activity_bloc.dart';
 import 'package:gotogether/src/features/activity/presentation/bloc/activity_event.dart';
@@ -26,15 +25,22 @@ class _ActivityInfoPageState extends State<ActivityInfoPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ActivityBloc, ActivityState>(
+    return BlocConsumer<ActivityBloc, ActivityState>(
+      listenWhen: (p, c) => c.notice != null && p.notice != c.notice,
+      listener: (context, state) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text(state.notice!)));
+        context.read<ActivityBloc>().add(const ActivityEvent.clearNotice());
+      },
       builder: (context, state) {
         final a = state.selected;
         if (a == null) {
           return Scaffold(appBar: AppBar(), body: const SizedBox());
         }
-        final joined = state.joinedIds.contains(a.id);
-        final saved = state.savedIds.contains(a.id);
-        final full = a.currentParticipants >= a.maxParticipants;
+        final joined = a.isJoined;
+        final saved = a.isSaved;
+        final full = a.isFull;
+        final busy = state.busyIds.contains(a.id);
         final t = Theme.of(context);
         final scheme = t.colorScheme;
 
@@ -133,7 +139,6 @@ class _ActivityInfoPageState extends State<ActivityInfoPage> {
                     ),
                     const SizedBox(height: 6),
                     for (final u in a.joinedUsers) _UserTile(u),
-                    if (joined) _UserTile(const User(name: 'คุณ', profileImage: 'https://picsum.photos/id/64/100')),
                   ],
                 ),
               ),
@@ -144,12 +149,12 @@ class _ActivityInfoPageState extends State<ActivityInfoPage> {
               padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
               child: joined
                   ? OutlinedButton.icon(
-                      onPressed: () => _toggleJoin(context, a),
+                      onPressed: busy ? null : () => _toggleJoin(context, a),
                       icon: const Icon(Icons.logout),
                       label: const Text('ออกจากทริป'),
                     )
                   : FilledButton.icon(
-                      onPressed: full ? null : () => _toggleJoin(context, a),
+                      onPressed: (full || busy) ? null : () => _toggleJoin(context, a),
                       icon: const Icon(Icons.group_add),
                       label: Text(full ? 'ทริปเต็มแล้ว' : 'เข้าร่วมทริป'),
                     ),
@@ -161,12 +166,7 @@ class _ActivityInfoPageState extends State<ActivityInfoPage> {
   }
 
   void _toggleJoin(BuildContext context, Activity a) {
-    final bloc = context.read<ActivityBloc>();
-    final wasJoined = bloc.state.joinedIds.contains(a.id);
-    bloc.add(ActivityEvent.toggleJoin(a.id));
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text(wasJoined ? 'ออกจากทริปแล้ว' : 'เข้าร่วมทริปเรียบร้อย 🎉'),
-    ));
+    context.read<ActivityBloc>().add(ActivityEvent.toggleJoin(a.id));
   }
 }
 

@@ -1,33 +1,29 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:gotogether/src/core/models/activity/activity_model.dart';
+import '../../domain/entities/entities.dart';
 
 part 'activity_state.freezed.dart';
-part 'activity_state.g.dart'; // ✅ สำคัญสำหรับ fromJson()
 
-// @freezed
-// class ActivityState with _$ActivityState {
-//   const factory ActivityState.initial() = _Initial;
-//   const factory ActivityState.loading() = _Loading;
-//   const factory ActivityState.loaded(List<Activity> activities) = _Loaded;
-//   const factory ActivityState.selected(Activity activity) = _Selected;
-
-//   const factory ActivityState.error(String message) = _Error;
-
-// }
+enum SubmitStatus { idle, submitting, success, failure }
 
 @freezed
 class ActivityState with _$ActivityState {
+  const ActivityState._();
+
   const factory ActivityState({
     @Default([]) List<Activity> activities,
     Activity? selected,
     @Default(false) bool isLoading,
+    /// ข้อผิดพลาดตอนโหลดรายการ
     String? error,
     @Default('') String query,
     String? tag,
-    @Default([]) List<String> savedIds,
-    @Default([]) List<String> joinedIds,
+    @Default(SubmitStatus.idle) SubmitStatus submitStatus,
+    /// ข้อความแจ้งผู้ใช้ครั้งเดียว (snackbar) เช่น join ไม่สำเร็จ
+    String? notice,
+    /// id ที่กำลังรอ backend ตอบ (กันกดซ้ำ)
+    @Default([]) List<String> busyIds,
   }) = _ActivityState;
 
-  factory ActivityState.fromJson(Map<String, dynamic> json) =>
-      _$ActivityStateFromJson(json);
+  List<Activity> get joined => activities.where((a) => a.isJoined).toList();
+  List<Activity> get saved => activities.where((a) => a.isSaved).toList();
 }

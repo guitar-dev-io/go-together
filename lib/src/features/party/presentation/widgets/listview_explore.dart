@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gotogether/src/core/models/activity/activity_model.dart';
+import 'package:gotogether/src/features/activity/domain/entities/entities.dart';
 import 'package:gotogether/src/core/widgets/widgets.dart';
 import 'package:gotogether/src/features/activity/presentation/bloc/activity_bloc.dart';
 import 'package:gotogether/src/features/activity/presentation/bloc/activity_event.dart';

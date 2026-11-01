@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gotogether/src/core/models/activity/activity_model.dart';
+import 'package:gotogether/src/features/activity/domain/entities/entities.dart';
 import 'package:gotogether/src/core/widgets/optimized_image.dart';
 import 'package:gotogether/src/features/activity/presentation/bloc/activity_bloc.dart';
 import 'package:gotogether/src/features/activity/presentation/bloc/activity_event.dart';
-import 'package:gotogether/src/features/activity/presentation/bloc/activity_state.dart';
 
 /// กองรูปผู้เข้าร่วม + จำนวนที่เหลือ
 class AvatarStack extends StatelessWidget {
@@ -63,7 +62,7 @@ class CardExprole extends StatelessWidget {
   Widget build(BuildContext context) {
     final t = Theme.of(context);
     final scheme = t.colorScheme;
-    final isFull = item.currentParticipants >= item.maxParticipants;
+    final isFull = item.isFull;
     final ratio =
         (item.currentParticipants / item.maxParticipants).clamp(0.0, 1.0);
 
@@ -88,15 +87,13 @@ class CardExprole extends StatelessWidget {
                 Positioned(
                   top: 8,
                   right: 8,
-                  child: BlocSelector<ActivityBloc, ActivityState, bool>(
-                    selector: (s) => s.savedIds.contains(item.id),
-                    builder: (context, saved) => IconButton.filledTonal(
-                      tooltip: saved ? 'เลิกบันทึก' : 'บันทึก',
-                      onPressed: () => context
-                          .read<ActivityBloc>()
-                          .add(ActivityEvent.toggleSaved(item.id)),
-                      icon: Icon(saved ? Icons.bookmark : Icons.bookmark_border),
-                    ),
+                  child: IconButton.filledTonal(
+                    tooltip: item.isSaved ? 'เลิกบันทึก' : 'บันทึก',
+                    onPressed: () => context
+                        .read<ActivityBloc>()
+                        .add(ActivityEvent.toggleSaved(item.id)),
+                    icon: Icon(
+                        item.isSaved ? Icons.bookmark : Icons.bookmark_border),
                   ),
                 ),
                 if (isFull)

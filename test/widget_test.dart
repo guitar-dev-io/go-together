@@ -1,6 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:gotogether/root.dart';
+import 'package:gotogether/src/core/config/injection.dart';
+import 'package:gotogether/src/features/activity/data/sources/activity_mock_data_source.dart';
 
 void main() {
   testWidgets('Explore feed shows activities and can open create page',
@@ -13,6 +15,9 @@ void main() {
     };
     addTearDown(() => FlutterError.onError = original);
 
+    await DependencyInjection.setup(
+      activityDataSource: ActivityMockDataSource(delay: Duration.zero),
+    );
     await tester.pumpWidget(const RootApp());
     await tester.pump(const Duration(seconds: 1));
 

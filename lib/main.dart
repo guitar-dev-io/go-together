@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'root.dart';
 
 Future<void> main() async {
-  //  Here we are calling the Dependency Injection
+  // Dependency Injection (เลือก backend จริง/mock จาก AppEnv)
   await DependencyInjection.init();
-  //  This is the main app
   runApp(const RootApp());
 }

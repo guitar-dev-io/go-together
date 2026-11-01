@@ -41,8 +41,8 @@ class ProfileView extends StatelessWidget {
             const SizedBox(height: 20),
             Row(
               children: [
-                _Stat('ทริปที่เข้าร่วม', state.joinedIds.length),
-                _Stat('บันทึกไว้', state.savedIds.length),
+                _Stat('ทริปที่เข้าร่วม', state.joined.length),
+                _Stat('บันทึกไว้', state.saved.length),
                 _Stat('ทริปทั้งหมด', state.activities.length),
               ],
             ),

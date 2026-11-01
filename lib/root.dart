@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gotogether/src/core/theme/theme.dart';
+import 'package:gotogether/src/core/config/injection.dart';
 import 'package:gotogether/src/features/activity/presentation/bloc/activity_bloc.dart';
 import 'package:gotogether/src/features/home/presentation/pages/pages.dart';
 
@@ -12,7 +13,7 @@ class RootApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ActivityBloc(),
+      create: (context) => sl<ActivityBloc>(),
       child: ScreenUtilInit(
         designSize: const Size(360, 690),
         minTextAdapt: true,

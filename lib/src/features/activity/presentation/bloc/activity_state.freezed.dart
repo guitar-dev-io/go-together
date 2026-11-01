@@ -14,23 +14,23 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-ActivityState _$ActivityStateFromJson(Map<String, dynamic> json) {
-  return _ActivityState.fromJson(json);
-}
-
 /// @nodoc
 mixin _$ActivityState {
   List<Activity> get activities => throw _privateConstructorUsedError;
   Activity? get selected => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
+
+  /// ข้อผิดพลาดตอนโหลดรายการ
   String? get error => throw _privateConstructorUsedError;
   String get query => throw _privateConstructorUsedError;
   String? get tag => throw _privateConstructorUsedError;
-  List<String> get savedIds => throw _privateConstructorUsedError;
-  List<String> get joinedIds => throw _privateConstructorUsedError;
+  SubmitStatus get submitStatus => throw _privateConstructorUsedError;
 
-  /// Serializes this ActivityState to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  /// ข้อความแจ้งผู้ใช้ครั้งเดียว (snackbar) เช่น join ไม่สำเร็จ
+  String? get notice => throw _privateConstructorUsedError;
+
+  /// id ที่กำลังรอ backend ตอบ (กันกดซ้ำ)
+  List<String> get busyIds => throw _privateConstructorUsedError;
 
   /// Create a copy of ActivityState
   /// with the given fields replaced by the non-null parameter values.
@@ -52,10 +52,9 @@ abstract class $ActivityStateCopyWith<$Res> {
       String? error,
       String query,
       String? tag,
-      List<String> savedIds,
-      List<String> joinedIds});
-
-  $ActivityCopyWith<$Res>? get selected;
+      SubmitStatus submitStatus,
+      String? notice,
+      List<String> busyIds});
 }
 
 /// @nodoc
@@ -79,8 +78,9 @@ class _$ActivityStateCopyWithImpl<$Res, $Val extends ActivityState>
     Object? error = freezed,
     Object? query = null,
     Object? tag = freezed,
-    Object? savedIds = null,
-    Object? joinedIds = null,
+    Object? submitStatus = null,
+    Object? notice = freezed,
+    Object? busyIds = null,
   }) {
     return _then(_value.copyWith(
       activities: null == activities
@@ -107,29 +107,19 @@ class _$ActivityStateCopyWithImpl<$Res, $Val extends ActivityState>
           ? _value.tag
           : tag // ignore: cast_nullable_to_non_nullable
               as String?,
-      savedIds: null == savedIds
-          ? _value.savedIds
-          : savedIds // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      joinedIds: null == joinedIds
-          ? _value.joinedIds
-          : joinedIds // ignore: cast_nullable_to_non_nullable
+      submitStatus: null == submitStatus
+          ? _value.submitStatus
+          : submitStatus // ignore: cast_nullable_to_non_nullable
+              as SubmitStatus,
+      notice: freezed == notice
+          ? _value.notice
+          : notice // ignore: cast_nullable_to_non_nullable
+              as String?,
+      busyIds: null == busyIds
+          ? _value.busyIds
+          : busyIds // ignore: cast_nullable_to_non_nullable
               as List<String>,
     ) as $Val);
-  }
-
-  /// Create a copy of ActivityState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ActivityCopyWith<$Res>? get selected {
-    if (_value.selected == null) {
-      return null;
-    }
-
-    return $ActivityCopyWith<$Res>(_value.selected!, (value) {
-      return _then(_value.copyWith(selected: value) as $Val);
-    });
   }
 }
 
@@ -148,11 +138,9 @@ abstract class _$$ActivityStateImplCopyWith<$Res>
       String? error,
       String query,
       String? tag,
-      List<String> savedIds,
-      List<String> joinedIds});
-
-  @override
-  $ActivityCopyWith<$Res>? get selected;
+      SubmitStatus submitStatus,
+      String? notice,
+      List<String> busyIds});
 }
 
 /// @nodoc
@@ -174,8 +162,9 @@ class __$$ActivityStateImplCopyWithImpl<$Res>
     Object? error = freezed,
     Object? query = null,
     Object? tag = freezed,
-    Object? savedIds = null,
-    Object? joinedIds = null,
+    Object? submitStatus = null,
+    Object? notice = freezed,
+    Object? busyIds = null,
   }) {
     return _then(_$ActivityStateImpl(
       activities: null == activities
@@ -202,21 +191,25 @@ class __$$ActivityStateImplCopyWithImpl<$Res>
           ? _value.tag
           : tag // ignore: cast_nullable_to_non_nullable
               as String?,
-      savedIds: null == savedIds
-          ? _value._savedIds
-          : savedIds // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      joinedIds: null == joinedIds
-          ? _value._joinedIds
-          : joinedIds // ignore: cast_nullable_to_non_nullable
+      submitStatus: null == submitStatus
+          ? _value.submitStatus
+          : submitStatus // ignore: cast_nullable_to_non_nullable
+              as SubmitStatus,
+      notice: freezed == notice
+          ? _value.notice
+          : notice // ignore: cast_nullable_to_non_nullable
+              as String?,
+      busyIds: null == busyIds
+          ? _value._busyIds
+          : busyIds // ignore: cast_nullable_to_non_nullable
               as List<String>,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$ActivityStateImpl implements _ActivityState {
+
+class _$ActivityStateImpl extends _ActivityState {
   const _$ActivityStateImpl(
       {final List<Activity> activities = const [],
       this.selected,
@@ -224,14 +217,12 @@ class _$ActivityStateImpl implements _ActivityState {
       this.error,
       this.query = '',
       this.tag,
-      final List<String> savedIds = const [],
-      final List<String> joinedIds = const []})
+      this.submitStatus = SubmitStatus.idle,
+      this.notice,
+      final List<String> busyIds = const []})
       : _activities = activities,
-        _savedIds = savedIds,
-        _joinedIds = joinedIds;
-
-  factory _$ActivityStateImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ActivityStateImplFromJson(json);
+        _busyIds = busyIds,
+        super._();
 
   final List<Activity> _activities;
   @override
@@ -247,6 +238,8 @@ class _$ActivityStateImpl implements _ActivityState {
   @override
   @JsonKey()
   final bool isLoading;
+
+  /// ข้อผิดพลาดตอนโหลดรายการ
   @override
   final String? error;
   @override
@@ -254,27 +247,29 @@ class _$ActivityStateImpl implements _ActivityState {
   final String query;
   @override
   final String? tag;
-  final List<String> _savedIds;
   @override
   @JsonKey()
-  List<String> get savedIds {
-    if (_savedIds is EqualUnmodifiableListView) return _savedIds;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_savedIds);
-  }
+  final SubmitStatus submitStatus;
 
-  final List<String> _joinedIds;
+  /// ข้อความแจ้งผู้ใช้ครั้งเดียว (snackbar) เช่น join ไม่สำเร็จ
+  @override
+  final String? notice;
+
+  /// id ที่กำลังรอ backend ตอบ (กันกดซ้ำ)
+  final List<String> _busyIds;
+
+  /// id ที่กำลังรอ backend ตอบ (กันกดซ้ำ)
   @override
   @JsonKey()
-  List<String> get joinedIds {
-    if (_joinedIds is EqualUnmodifiableListView) return _joinedIds;
+  List<String> get busyIds {
+    if (_busyIds is EqualUnmodifiableListView) return _busyIds;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_joinedIds);
+    return EqualUnmodifiableListView(_busyIds);
   }
 
   @override
   String toString() {
-    return 'ActivityState(activities: $activities, selected: $selected, isLoading: $isLoading, error: $error, query: $query, tag: $tag, savedIds: $savedIds, joinedIds: $joinedIds)';
+    return 'ActivityState(activities: $activities, selected: $selected, isLoading: $isLoading, error: $error, query: $query, tag: $tag, submitStatus: $submitStatus, notice: $notice, busyIds: $busyIds)';
   }
 
   @override
@@ -291,12 +286,12 @@ class _$ActivityStateImpl implements _ActivityState {
             (identical(other.error, error) || other.error == error) &&
             (identical(other.query, query) || other.query == query) &&
             (identical(other.tag, tag) || other.tag == tag) &&
-            const DeepCollectionEquality().equals(other._savedIds, _savedIds) &&
-            const DeepCollectionEquality()
-                .equals(other._joinedIds, _joinedIds));
+            (identical(other.submitStatus, submitStatus) ||
+                other.submitStatus == submitStatus) &&
+            (identical(other.notice, notice) || other.notice == notice) &&
+            const DeepCollectionEquality().equals(other._busyIds, _busyIds));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -306,8 +301,9 @@ class _$ActivityStateImpl implements _ActivityState {
       error,
       query,
       tag,
-      const DeepCollectionEquality().hash(_savedIds),
-      const DeepCollectionEquality().hash(_joinedIds));
+      submitStatus,
+      notice,
+      const DeepCollectionEquality().hash(_busyIds));
 
   /// Create a copy of ActivityState
   /// with the given fields replaced by the non-null parameter values.
@@ -316,16 +312,9 @@ class _$ActivityStateImpl implements _ActivityState {
   @pragma('vm:prefer-inline')
   _$$ActivityStateImplCopyWith<_$ActivityStateImpl> get copyWith =>
       __$$ActivityStateImplCopyWithImpl<_$ActivityStateImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ActivityStateImplToJson(
-      this,
-    );
-  }
 }
 
-abstract class _ActivityState implements ActivityState {
+abstract class _ActivityState extends ActivityState {
   const factory _ActivityState(
       {final List<Activity> activities,
       final Activity? selected,
@@ -333,11 +322,10 @@ abstract class _ActivityState implements ActivityState {
       final String? error,
       final String query,
       final String? tag,
-      final List<String> savedIds,
-      final List<String> joinedIds}) = _$ActivityStateImpl;
-
-  factory _ActivityState.fromJson(Map<String, dynamic> json) =
-      _$ActivityStateImpl.fromJson;
+      final SubmitStatus submitStatus,
+      final String? notice,
+      final List<String> busyIds}) = _$ActivityStateImpl;
+  const _ActivityState._() : super._();
 
   @override
   List<Activity> get activities;
@@ -345,6 +333,8 @@ abstract class _ActivityState implements ActivityState {
   Activity? get selected;
   @override
   bool get isLoading;
+
+  /// ข้อผิดพลาดตอนโหลดรายการ
   @override
   String? get error;
   @override
@@ -352,9 +342,15 @@ abstract class _ActivityState implements ActivityState {
   @override
   String? get tag;
   @override
-  List<String> get savedIds;
+  SubmitStatus get submitStatus;
+
+  /// ข้อความแจ้งผู้ใช้ครั้งเดียว (snackbar) เช่น join ไม่สำเร็จ
   @override
-  List<String> get joinedIds;
+  String? get notice;
+
+  /// id ที่กำลังรอ backend ตอบ (กันกดซ้ำ)
+  @override
+  List<String> get busyIds;
 
   /// Create a copy of ActivityState
   /// with the given fields replaced by the non-null parameter values.

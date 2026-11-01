@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gotogether/src/core/models/activity/activity_model.dart';
-import 'package:gotogether/src/core/models/activity/user_model.dart';
+import 'package:gotogether/src/features/activity/domain/entities/entities.dart';
 import 'package:gotogether/src/features/activity/presentation/bloc/activity_bloc.dart';
 import 'package:gotogether/src/features/activity/presentation/bloc/activity_event.dart';
+import 'package:gotogether/src/features/activity/presentation/bloc/activity_state.dart';
 
 class CreatePartyPage extends StatefulWidget {
   const CreatePartyPage({super.key});
@@ -65,34 +65,44 @@ class _CreatePartyPageState extends State<CreatePartyPage> {
         _end == null) {
       return;
     }
-    final max = int.parse(_max.text);
-    final activity = Activity(
-      id: DateTime.now().microsecondsSinceEpoch.toString(),
+    final activity = NewActivity(
       title: _title.text.trim(),
       description: _desc.text.trim(),
       tags: _tags.toList(),
       location: _location.text.trim(),
       date: _fmtDate(_date!),
       time: '${_start!.format(context)} - ${_end!.format(context)}',
-      owner: const User(name: 'คุณ', profileImage: 'https://picsum.photos/id/64/100'),
-      joinedUsers: const [],
-      maxParticipants: max,
-      currentParticipants: 1,
-      photos: ['https://picsum.photos/seed/${_title.text.hashCode.abs()}/600/400'],
+      maxParticipants: int.parse(_max.text),
     );
     context.read<ActivityBloc>().add(ActivityEvent.create(activity));
-    Navigator.pop(context);
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('สร้างทริปเรียบร้อยแล้ว 🎉')),
-    );
   }
 
   @override
   Widget build(BuildContext context) {
+    return BlocConsumer<ActivityBloc, ActivityState>(
+      listenWhen: (p, c) => p.submitStatus != c.submitStatus,
+      listener: (context, state) {
+        if (state.submitStatus == SubmitStatus.success) {
+          Navigator.pop(context);
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('สร้างทริปเรียบร้อยแล้ว 🎉')),
+          );
+        } else if (state.submitStatus == SubmitStatus.failure &&
+            state.notice != null) {
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text(state.notice!)));
+          context.read<ActivityBloc>().add(const ActivityEvent.clearNotice());
+        }
+      },
+      builder: (context, state) => _buildForm(context, state),
+    );
+  }
+
+  Widget _buildForm(BuildContext context, ActivityState state) {
+    final submitting = state.submitStatus == SubmitStatus.submitting;
     final t = Theme.of(context);
     String? required(String? v) =>
         (v == null || v.trim().isEmpty) ? 'จำเป็นต้องกรอก' : null;
-
     return Scaffold(
       appBar: AppBar(title: const Text('สร้างทริป')),
       body: Form(
@@ -196,7 +206,16 @@ class _CreatePartyPageState extends State<CreatePartyPage> {
       bottomNavigationBar: SafeArea(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
-          child: FilledButton(onPressed: _submit, child: const Text('โพสต์ทริป')),
+          child: FilledButton(
+            onPressed: submitting ? null : _submit,
+            child: submitting
+                ? const SizedBox(
+                    height: 22,
+                    width: 22,
+                    child: CircularProgressIndicator(strokeWidth: 2),
+                  )
+                : const Text('โพสต์ทริป'),
+          ),
         ),
       ),
     );

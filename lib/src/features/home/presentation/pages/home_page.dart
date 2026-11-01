@@ -86,12 +86,8 @@ class _HomePageState extends State<HomePage> {
       appBar: _appBar(),
       body: BlocBuilder<ActivityBloc, ActivityState>(
         builder: (context, state) {
-          final mine = state.activities
-              .where((a) => state.joinedIds.contains(a.id))
-              .toList();
-          final saved = state.activities
-              .where((a) => state.savedIds.contains(a.id))
-              .toList();
+          final mine = state.joined;
+          final saved = state.saved;
           return IndexedStack(
             index: _index,
             children: [

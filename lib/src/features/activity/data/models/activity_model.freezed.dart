@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-Activity _$ActivityFromJson(Map<String, dynamic> json) {
-  return _Activity.fromJson(json);
+ActivityModel _$ActivityModelFromJson(Map<String, dynamic> json) {
+  return _ActivityModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Activity {
+mixin _$ActivityModel {
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
@@ -27,26 +27,29 @@ mixin _$Activity {
   String get location => throw _privateConstructorUsedError;
   String get date => throw _privateConstructorUsedError;
   String get time => throw _privateConstructorUsedError;
-  User get owner => throw _privateConstructorUsedError;
-  List<User> get joinedUsers => throw _privateConstructorUsedError;
+  UserModel get owner => throw _privateConstructorUsedError;
+  List<UserModel> get joinedUsers => throw _privateConstructorUsedError;
   int get maxParticipants => throw _privateConstructorUsedError;
   int get currentParticipants => throw _privateConstructorUsedError;
   List<String> get photos => throw _privateConstructorUsedError;
+  bool get isJoined => throw _privateConstructorUsedError;
+  bool get isSaved => throw _privateConstructorUsedError;
 
-  /// Serializes this Activity to a JSON map.
+  /// Serializes this ActivityModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of Activity
+  /// Create a copy of ActivityModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ActivityCopyWith<Activity> get copyWith =>
+  $ActivityModelCopyWith<ActivityModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ActivityCopyWith<$Res> {
-  factory $ActivityCopyWith(Activity value, $Res Function(Activity) then) =
-      _$ActivityCopyWithImpl<$Res, Activity>;
+abstract class $ActivityModelCopyWith<$Res> {
+  factory $ActivityModelCopyWith(
+          ActivityModel value, $Res Function(ActivityModel) then) =
+      _$ActivityModelCopyWithImpl<$Res, ActivityModel>;
   @useResult
   $Res call(
       {String id,
@@ -56,26 +59,28 @@ abstract class $ActivityCopyWith<$Res> {
       String location,
       String date,
       String time,
-      User owner,
-      List<User> joinedUsers,
+      UserModel owner,
+      List<UserModel> joinedUsers,
       int maxParticipants,
       int currentParticipants,
-      List<String> photos});
+      List<String> photos,
+      bool isJoined,
+      bool isSaved});
 
-  $UserCopyWith<$Res> get owner;
+  $UserModelCopyWith<$Res> get owner;
 }
 
 /// @nodoc
-class _$ActivityCopyWithImpl<$Res, $Val extends Activity>
-    implements $ActivityCopyWith<$Res> {
-  _$ActivityCopyWithImpl(this._value, this._then);
+class _$ActivityModelCopyWithImpl<$Res, $Val extends ActivityModel>
+    implements $ActivityModelCopyWith<$Res> {
+  _$ActivityModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of Activity
+  /// Create a copy of ActivityModel
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -92,6 +97,8 @@ class _$ActivityCopyWithImpl<$Res, $Val extends Activity>
     Object? maxParticipants = null,
     Object? currentParticipants = null,
     Object? photos = null,
+    Object? isJoined = null,
+    Object? isSaved = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -125,11 +132,11 @@ class _$ActivityCopyWithImpl<$Res, $Val extends Activity>
       owner: null == owner
           ? _value.owner
           : owner // ignore: cast_nullable_to_non_nullable
-              as User,
+              as UserModel,
       joinedUsers: null == joinedUsers
           ? _value.joinedUsers
           : joinedUsers // ignore: cast_nullable_to_non_nullable
-              as List<User>,
+              as List<UserModel>,
       maxParticipants: null == maxParticipants
           ? _value.maxParticipants
           : maxParticipants // ignore: cast_nullable_to_non_nullable
@@ -142,26 +149,34 @@ class _$ActivityCopyWithImpl<$Res, $Val extends Activity>
           ? _value.photos
           : photos // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      isJoined: null == isJoined
+          ? _value.isJoined
+          : isJoined // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isSaved: null == isSaved
+          ? _value.isSaved
+          : isSaved // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
-  /// Create a copy of Activity
+  /// Create a copy of ActivityModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $UserCopyWith<$Res> get owner {
-    return $UserCopyWith<$Res>(_value.owner, (value) {
+  $UserModelCopyWith<$Res> get owner {
+    return $UserModelCopyWith<$Res>(_value.owner, (value) {
       return _then(_value.copyWith(owner: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$$ActivityImplCopyWith<$Res>
-    implements $ActivityCopyWith<$Res> {
-  factory _$$ActivityImplCopyWith(
-          _$ActivityImpl value, $Res Function(_$ActivityImpl) then) =
-      __$$ActivityImplCopyWithImpl<$Res>;
+abstract class _$$ActivityModelImplCopyWith<$Res>
+    implements $ActivityModelCopyWith<$Res> {
+  factory _$$ActivityModelImplCopyWith(
+          _$ActivityModelImpl value, $Res Function(_$ActivityModelImpl) then) =
+      __$$ActivityModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -172,25 +187,27 @@ abstract class _$$ActivityImplCopyWith<$Res>
       String location,
       String date,
       String time,
-      User owner,
-      List<User> joinedUsers,
+      UserModel owner,
+      List<UserModel> joinedUsers,
       int maxParticipants,
       int currentParticipants,
-      List<String> photos});
+      List<String> photos,
+      bool isJoined,
+      bool isSaved});
 
   @override
-  $UserCopyWith<$Res> get owner;
+  $UserModelCopyWith<$Res> get owner;
 }
 
 /// @nodoc
-class __$$ActivityImplCopyWithImpl<$Res>
-    extends _$ActivityCopyWithImpl<$Res, _$ActivityImpl>
-    implements _$$ActivityImplCopyWith<$Res> {
-  __$$ActivityImplCopyWithImpl(
-      _$ActivityImpl _value, $Res Function(_$ActivityImpl) _then)
+class __$$ActivityModelImplCopyWithImpl<$Res>
+    extends _$ActivityModelCopyWithImpl<$Res, _$ActivityModelImpl>
+    implements _$$ActivityModelImplCopyWith<$Res> {
+  __$$ActivityModelImplCopyWithImpl(
+      _$ActivityModelImpl _value, $Res Function(_$ActivityModelImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of Activity
+  /// Create a copy of ActivityModel
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -207,8 +224,10 @@ class __$$ActivityImplCopyWithImpl<$Res>
     Object? maxParticipants = null,
     Object? currentParticipants = null,
     Object? photos = null,
+    Object? isJoined = null,
+    Object? isSaved = null,
   }) {
-    return _then(_$ActivityImpl(
+    return _then(_$ActivityModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -240,11 +259,11 @@ class __$$ActivityImplCopyWithImpl<$Res>
       owner: null == owner
           ? _value.owner
           : owner // ignore: cast_nullable_to_non_nullable
-              as User,
+              as UserModel,
       joinedUsers: null == joinedUsers
           ? _value._joinedUsers
           : joinedUsers // ignore: cast_nullable_to_non_nullable
-              as List<User>,
+              as List<UserModel>,
       maxParticipants: null == maxParticipants
           ? _value.maxParticipants
           : maxParticipants // ignore: cast_nullable_to_non_nullable
@@ -257,32 +276,43 @@ class __$$ActivityImplCopyWithImpl<$Res>
           ? _value._photos
           : photos // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      isJoined: null == isJoined
+          ? _value.isJoined
+          : isJoined // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isSaved: null == isSaved
+          ? _value.isSaved
+          : isSaved // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$ActivityImpl implements _Activity {
-  const _$ActivityImpl(
+class _$ActivityModelImpl extends _ActivityModel {
+  const _$ActivityModelImpl(
       {required this.id,
       required this.title,
       required this.description,
-      required final List<String> tags,
+      final List<String> tags = const [],
       required this.location,
       required this.date,
       required this.time,
       required this.owner,
-      required final List<User> joinedUsers,
+      final List<UserModel> joinedUsers = const [],
       required this.maxParticipants,
       required this.currentParticipants,
-      required final List<String> photos})
+      final List<String> photos = const [],
+      this.isJoined = false,
+      this.isSaved = false})
       : _tags = tags,
         _joinedUsers = joinedUsers,
-        _photos = photos;
+        _photos = photos,
+        super._();
 
-  factory _$ActivityImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ActivityImplFromJson(json);
+  factory _$ActivityModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ActivityModelImplFromJson(json);
 
   @override
   final String id;
@@ -292,6 +322,7 @@ class _$ActivityImpl implements _Activity {
   final String description;
   final List<String> _tags;
   @override
+  @JsonKey()
   List<String> get tags {
     if (_tags is EqualUnmodifiableListView) return _tags;
     // ignore: implicit_dynamic_type
@@ -305,10 +336,11 @@ class _$ActivityImpl implements _Activity {
   @override
   final String time;
   @override
-  final User owner;
-  final List<User> _joinedUsers;
+  final UserModel owner;
+  final List<UserModel> _joinedUsers;
   @override
-  List<User> get joinedUsers {
+  @JsonKey()
+  List<UserModel> get joinedUsers {
     if (_joinedUsers is EqualUnmodifiableListView) return _joinedUsers;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_joinedUsers);
@@ -320,6 +352,7 @@ class _$ActivityImpl implements _Activity {
   final int currentParticipants;
   final List<String> _photos;
   @override
+  @JsonKey()
   List<String> get photos {
     if (_photos is EqualUnmodifiableListView) return _photos;
     // ignore: implicit_dynamic_type
@@ -327,15 +360,22 @@ class _$ActivityImpl implements _Activity {
   }
 
   @override
+  @JsonKey()
+  final bool isJoined;
+  @override
+  @JsonKey()
+  final bool isSaved;
+
+  @override
   String toString() {
-    return 'Activity(id: $id, title: $title, description: $description, tags: $tags, location: $location, date: $date, time: $time, owner: $owner, joinedUsers: $joinedUsers, maxParticipants: $maxParticipants, currentParticipants: $currentParticipants, photos: $photos)';
+    return 'ActivityModel(id: $id, title: $title, description: $description, tags: $tags, location: $location, date: $date, time: $time, owner: $owner, joinedUsers: $joinedUsers, maxParticipants: $maxParticipants, currentParticipants: $currentParticipants, photos: $photos, isJoined: $isJoined, isSaved: $isSaved)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ActivityImpl &&
+            other is _$ActivityModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
@@ -352,7 +392,10 @@ class _$ActivityImpl implements _Activity {
                 other.maxParticipants == maxParticipants) &&
             (identical(other.currentParticipants, currentParticipants) ||
                 other.currentParticipants == currentParticipants) &&
-            const DeepCollectionEquality().equals(other._photos, _photos));
+            const DeepCollectionEquality().equals(other._photos, _photos) &&
+            (identical(other.isJoined, isJoined) ||
+                other.isJoined == isJoined) &&
+            (identical(other.isSaved, isSaved) || other.isSaved == isSaved));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -370,41 +413,46 @@ class _$ActivityImpl implements _Activity {
       const DeepCollectionEquality().hash(_joinedUsers),
       maxParticipants,
       currentParticipants,
-      const DeepCollectionEquality().hash(_photos));
+      const DeepCollectionEquality().hash(_photos),
+      isJoined,
+      isSaved);
 
-  /// Create a copy of Activity
+  /// Create a copy of ActivityModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ActivityImplCopyWith<_$ActivityImpl> get copyWith =>
-      __$$ActivityImplCopyWithImpl<_$ActivityImpl>(this, _$identity);
+  _$$ActivityModelImplCopyWith<_$ActivityModelImpl> get copyWith =>
+      __$$ActivityModelImplCopyWithImpl<_$ActivityModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ActivityImplToJson(
+    return _$$ActivityModelImplToJson(
       this,
     );
   }
 }
 
-abstract class _Activity implements Activity {
-  const factory _Activity(
+abstract class _ActivityModel extends ActivityModel {
+  const factory _ActivityModel(
       {required final String id,
       required final String title,
       required final String description,
-      required final List<String> tags,
+      final List<String> tags,
       required final String location,
       required final String date,
       required final String time,
-      required final User owner,
-      required final List<User> joinedUsers,
+      required final UserModel owner,
+      final List<UserModel> joinedUsers,
       required final int maxParticipants,
       required final int currentParticipants,
-      required final List<String> photos}) = _$ActivityImpl;
+      final List<String> photos,
+      final bool isJoined,
+      final bool isSaved}) = _$ActivityModelImpl;
+  const _ActivityModel._() : super._();
 
-  factory _Activity.fromJson(Map<String, dynamic> json) =
-      _$ActivityImpl.fromJson;
+  factory _ActivityModel.fromJson(Map<String, dynamic> json) =
+      _$ActivityModelImpl.fromJson;
 
   @override
   String get id;
@@ -421,20 +469,24 @@ abstract class _Activity implements Activity {
   @override
   String get time;
   @override
-  User get owner;
+  UserModel get owner;
   @override
-  List<User> get joinedUsers;
+  List<UserModel> get joinedUsers;
   @override
   int get maxParticipants;
   @override
   int get currentParticipants;
   @override
   List<String> get photos;
+  @override
+  bool get isJoined;
+  @override
+  bool get isSaved;
 
-  /// Create a copy of Activity
+  /// Create a copy of ActivityModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ActivityImplCopyWith<_$ActivityImpl> get copyWith =>
+  _$$ActivityModelImplCopyWith<_$ActivityModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
